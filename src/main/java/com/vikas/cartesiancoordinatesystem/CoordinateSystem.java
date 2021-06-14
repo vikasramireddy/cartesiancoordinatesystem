@@ -12,9 +12,9 @@ public class CoordinateSystem {
 	/**
 	 * Definition of a line by means of two points
 	 * 
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * @param p1  Point Object
+	 * @param p2  Point Object
+	 * @return Returns true if line is using two points
 	 */
 	public boolean isLineUsingTwoPoints(Point p1, Point p2) {
 
@@ -25,9 +25,7 @@ public class CoordinateSystem {
 			double x2 = p2.getX();
 			double y2 = p2.getY();
 
-			if (x1 != x2 && y1 != y2) {
-				return true;
-			}
+			return x1 != x2 && y1 != y2;
 		}
 		return false;
 	}
@@ -35,9 +33,9 @@ public class CoordinateSystem {
 	/**
 	 * Definition of a line by means of gradient and y-intercept
 	 * 
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * @param p1 Point Object
+	 * @param p2 Point Object
+	 * @return String
 	 */
 	public String findGradientAndYIntercept(Point p1, Point p2) {
 
@@ -81,9 +79,9 @@ public class CoordinateSystem {
 	/**
 	 * Condition of parallelism of two lines
 	 * 
-	 * @param l1
-	 * @param l2
-	 * @return
+	 * @param l1  Line Object
+ 	 * @param l2  Line Object
+	 * @return Check to see if Line is Parallel
 	 */
 	public boolean isParallel(Line l1, Line l2) {
 
@@ -96,18 +94,16 @@ public class CoordinateSystem {
 
 			double determinant = a1 * b2 - a2 * b1;
 
-			if (determinant == 0) {
-				return true;
-			}
+			return determinant == 0;
 		}
 		return false;
 	}
 
 	/**
 	 * Condition of perpendicularity of two lines
-	 * @param l1
-	 * @param l2
-	 * @return
+	 * @param l1  Line Object
+	 * @param l2  Line Object
+	 * @return Return true or false to ensure Line is Perpendicular
 	 */
 	public boolean isPerpendicular(Line l1, Line l2) {
 
@@ -133,32 +129,20 @@ public class CoordinateSystem {
 			// Only line 1 has infinite slope
 			else if (x2 - x1 == 0) {
 				m2 = (y4 - y3) / (x4 - x3);
-				if (m2 == 0) {
-					return true;
-				} else {
-					return false;
-				}
+				return m2 == 0;
 			}
 
 			// Only line 2 has infinite slope
 			else if (x4 - x3 == 0) {
 				m1 = (y2 - y1) / (x2 - x1);
-				if (m1 == 0) {
-					return true;
-				} else {
-					return false;
-				}
+				return m1 == 0;
 			} else {
 				// Find slopes of the lines
 				m1 = (y2 - y1) / (x2 - x1);
 				m2 = (y4 - y3) / (x4 - x3);
 
 				// Check if their product is -1
-				if (m1 * m2 == -1) {
-					return true;
-				} else {
-					return false;
-				}
+				return m1 * m2 == -1;
 			}
 		}
 		return false;
@@ -166,9 +150,9 @@ public class CoordinateSystem {
 
 	/**
 	 * Condition of incidence of two lines and definition of the incidence point
-	 * @param l1
-	 * @param l2
-	 * @return
+	 * @param l1  Line Object
+	 * @param l2  Line Object
+	 * @return Returns the Point where the Incidence happens
 	 */
 	public Point lineIncidencePoint(Line l1, Line l2) {
 		if (l1 != null && l2 != null) {

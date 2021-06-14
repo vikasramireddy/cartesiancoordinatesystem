@@ -1,6 +1,12 @@
 package com.vikas.cartesiancoordinatesystem;
 
+
+
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,23 +17,23 @@ import com.vikas.cartesiancoordinatesystem.pojo.Point;
  * @author vikasramireddy
  *
  */
-class CartesiancoordinatesystemApplicationTests {
+public class CartesiancoordinatesystemTest {
 
 	@Test
 	public void definitionOfLineUsingTwoPointsTest() {
-		//SUCCESS CASE
+		// SUCCESS CASE
 		CoordinateSystem coordinateSystem = new CoordinateSystem();
 		boolean result = coordinateSystem.isLineUsingTwoPoints(new Point(3, 2), new Point(2, 6));
 
-		assertEquals(true, result);
+		assertTrue(result);
 	}
 
 	@Test
 	public void definitionOfLineUsingTwoPointsFailureTest() {
-		//FAILURE CASE
+		// FAILURE CASE
 		CoordinateSystem coordinateSystem = new CoordinateSystem();
 		boolean result = coordinateSystem.isLineUsingTwoPoints(new Point(2, 2), new Point(2, 2));
-		assertEquals(false, result);
+		assertFalse(result);
 	}
 
 	@Test
@@ -49,7 +55,7 @@ class CartesiancoordinatesystemApplicationTests {
 		l2.setEnd(new Point(3, 3));
 
 		boolean result = coordinateSystem.isParallel(l1, l2);
-		assertEquals(true, result);
+		assertTrue(result);
 	}
 
 	@Test
@@ -64,7 +70,7 @@ class CartesiancoordinatesystemApplicationTests {
 		l2.setEnd(new Point(8, 1));
 
 		boolean result = coordinateSystem.isPerpendicular(l1, l2);
-		assertEquals(true, result);
+		assertTrue(result);
 	}
 
 	@Test
@@ -79,11 +85,7 @@ class CartesiancoordinatesystemApplicationTests {
 		l2.setEnd(new Point(2, 4));
 
 		Point point = coordinateSystem.lineIncidencePoint(l1, l2);
-		boolean result = false;
-		if (point != null && point.getX() == 2.4 && point.getY() == 2.4) {
-			result = true;
-		}
-		assertEquals(true, result);
+		boolean result = point != null && point.getX() == 2.4 && point.getY() == 2.4;
+		assertTrue(result);
 	}
-
 }
